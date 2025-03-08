@@ -16,10 +16,10 @@ jobs:
           server: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          local_dir: .
-          remote_dir: /
+          local-dir: .
+          server-dir: /
           exclude: |
-            README.md
             LICENSE
-          delete: false
+            README.md
+            .git
           protocol: ftps
