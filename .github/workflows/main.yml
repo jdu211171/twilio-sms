@@ -13,7 +13,7 @@ jobs:
           server: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          protocol: ftpes
+          protocol: ftp
           secure: true
           server-dir: ./public_html/
           security-mode: loose
