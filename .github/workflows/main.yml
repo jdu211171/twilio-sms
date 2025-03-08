@@ -4,22 +4,16 @@ on:
     branches:
       - main
 jobs:
-  deploy:
-    name: Deploy to FTP
-    runs-on: Ubuntu-20.04
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Deploy to FTP
-        uses: SamKirkland/FTP-Deploy-Action@master
+      - uses: actions/checkout@v2.1.0
         with:
-          server: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          local-dir: ./
-          server-dir: /
-          exclude: |
-            LICENSE
-            README.md
-            .git
-          protocol: ftps
+          fetch-depth: 2
+      - name: FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          ftp-server: ${{ secrets.SERVER }}
+          ftp-username: ${{ secrets.USERNAME }}
+          ftp-password: ${{ secrets.PASSWORD }}
