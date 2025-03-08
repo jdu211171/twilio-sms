@@ -14,6 +14,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           protocol: ftp
-          secure: true
           server-dir: ./public_html/
           security-mode: loose
