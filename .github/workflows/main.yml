@@ -1,19 +1,19 @@
-name: Deploy to FTP
+name: Deploy to cPanel
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 jobs:
-  FTP-Deploy-Action:
-    name: FTP-Deploy-Action
+  FTP-Deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.1.0
-        with:
-          fetch-depth: 2
-      - name: FTP-Deploy-Action
+      - uses: actions/checkout@v4
+      - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           server: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
+          protocol: ftpes
+          secure: true
+          server-dir: ./public_html/
+          security-mode: loose
